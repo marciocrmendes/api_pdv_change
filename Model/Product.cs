@@ -17,10 +17,10 @@ namespace Entities
         /// <summary>
         /// Desconto do produto
         /// </summary>
-        public decimal Descount { get; set; }
+        //public decimal Descount { get; set; }
         /// <summary>
         /// Vendas realizadas do produto
         /// </summary>
-        public virtual IList<SaleProduct> Sales { get; set; }
+        public virtual IList<SaleProduct> Sales { get; set; } = new List<SaleProduct>();
     }
 }

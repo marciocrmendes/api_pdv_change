@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infra.Mappings
+namespace Infra.Mappings.EFCoreMap
 {
     public class ProductMap : IEntityTypeConfiguration<Product>
     {
@@ -19,15 +19,8 @@ namespace Infra.Mappings
             builder.Property(x => x.Name)
                 .HasColumnName("name").IsRequired().HasMaxLength(200);
 
-            builder.HasIndex(x => x.Price).IsUnique();
             builder.Property(x => x.Price)
-                .HasColumnName("total").IsRequired()
-                .HasColumnType("decimal(15,2)");
-
-            builder.HasIndex(x => x.Descount).IsUnique();
-            builder.Property(x => x.Descount)
-                .HasColumnName("total")
-                .HasDefaultValue(0.00)
+                .HasColumnName("price").IsRequired()
                 .HasColumnType("decimal(15,2)");
 
             builder.ToTable("products");

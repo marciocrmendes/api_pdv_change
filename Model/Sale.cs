@@ -10,7 +10,7 @@ namespace Entities
         /// <summary>
         /// Total do desconto da venda
         /// </summary>
-        public decimal Descount { get; set; }
+        public decimal? Descount { get; set; }
         /// <summary>
         /// Total da venda
         /// </summary>
@@ -22,6 +22,10 @@ namespace Entities
         /// <summary>
         /// Lista de produtos e suas respectivas quantidades vendidas
         /// </summary
-        public virtual IList<SaleProduct> ProductsSold { get; set; }
+        public virtual IList<SaleProduct> ProductsSold { get; set; } = new List<SaleProduct>();
+        /// <summary>
+        /// Notas utilizadas na compra
+        /// </summary>
+        public virtual IList<SaleBanknote> Banknotes { get; set; } 
     }
 }

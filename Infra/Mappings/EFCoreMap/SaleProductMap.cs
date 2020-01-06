@@ -5,19 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infra.Mappings
+namespace Infra.Mappings.EFCoreMap
 {
     public class SaleProductMap : IEntityTypeConfiguration<SaleProduct>
     {
         public void Configure(EntityTypeBuilder<SaleProduct> builder)
         {
-            //builder.HasKey(x => x.Id);
-            //builder.Property(x => x.Id)
-            //    .HasColumnName("id")
-            //    .IsRequired();
-
             builder.HasKey(sp => new { sp.ProductId, sp.SaleId });
-
 
             builder.Property(sp => sp.SaleId)
                 .HasColumnName("sale_id");
@@ -32,6 +26,12 @@ namespace Infra.Mappings
                 .HasOne(sp => sp.Product)
                 .WithMany(s => s.Sales)
                 .HasForeignKey(sp => sp.ProductId);
+
+            builder.HasIndex(x => x.Quantity);
+            builder.Property(x => x.Quantity)
+                .HasColumnName("quantity")
+                .HasDefaultValue(1)
+                .IsRequired();
 
             builder.ToTable("sale_product");
         }

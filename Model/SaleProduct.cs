@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class SaleProduct : BaseModel
+    public class SaleProduct
     {
         /// <summary>
         /// Chave estrangeira da tabela Sales

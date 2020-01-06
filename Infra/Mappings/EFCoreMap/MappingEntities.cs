@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infra.Mappings
+namespace Infra.Mappings.EFCoreMap
 {
     public static class MappingEntities
     {
@@ -13,10 +13,11 @@ namespace Infra.Mappings
         /// <param name="modelBuilder"></param>
         public static void Init(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new CashierMap());
+            modelBuilder.ApplyConfiguration(new BankNoteMap());
             modelBuilder.ApplyConfiguration(new SaleMap());
             modelBuilder.ApplyConfiguration(new ProductMap());
             modelBuilder.ApplyConfiguration(new SaleProductMap());
+            modelBuilder.ApplyConfiguration(new SaleBanknoteMap());
         }
     }
 }
