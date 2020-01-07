@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_pdv_change", "api_pdv_change\api_pdv_change.csproj", "{05E70EC4-88E5-4861-AF9F-D4D495A99B51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api_pdv_change", "api_pdv_change\api_pdv_change.csproj", "{05E70EC4-88E5-4861-AF9F-D4D495A99B51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{55BF5BB4-F2A0-44B6-8732-607611AF02A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{55BF5BB4-F2A0-44B6-8732-607611AF02A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Model\Entities.csproj", "{C95C0ABF-9818-48B7-A28E-0ACED784479A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Model\Entities.csproj", "{C95C0ABF-9818-48B7-A28E-0ACED784479A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - App", "1 - App", "{4DE6EC0F-E734-4F23-A7E3-FB8951973E19}"
 EndProject
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Models", "3 - Models", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{2C1DD310-CB3A-4DFC-93E0-83C130FA3D79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraTests", "InfraTests\InfraTests.csproj", "{CA87B13D-0705-4E1C-85FC-10B89EC1B046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraTests", "InfraTests\InfraTests.csproj", "{CA87B13D-0705-4E1C-85FC-10B89EC1B046}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

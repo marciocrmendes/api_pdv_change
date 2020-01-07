@@ -4,34 +4,56 @@ using Infra.IRepository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Infra.Repository.Dapper
 {
     public class ProductDapperRepository : DapperRepository<Product>, IProductRepository
     {
-        public ProductDapperRepository(IConfiguration configuration) : base(configuration)
+        public ProductDapperRepository()
         {
         }
 
         public override IEnumerable<Product> GetAll()
         {
-            return _connection.Query<Product, Sale, Product>(
-                @"
+            var sql = @"
                 SELECT 
                     * 
-                FROM product as p
-                INNER JOIN sale as s ON",
-                map: (product, sale) =>
-                {
-                    //product.Sales = sale;
-                    return product;
-                });
+                FROM product as p";
+            return _connection.Query<Product>(sql);
         }
 
         public override Product GetById(int id)
         {
-            return base.GetById(id);
+            var sql = @"
+                SELECT 
+                    * 
+                FROM products as p
+                INNER JOIN sale_product AS sp ON sp.product_id = p.id
+                INNER JOIN sales AS s ON s.id = sp.sale_id
+                WHERE
+                    p.id = @ProductId";
+            
+            var list = _connection.Query<Product, Sale, Product>(sql
+                ,
+                map: (product, sale) =>
+                {
+                    var salesProducts = new SaleProduct()
+                    {
+                        ProductId = product.Id,
+                        Product = product,
+                        SaleId = sale.Id,
+                        Sale = sale
+                    };
+
+                    product.Sales.Add(salesProducts);
+                    return product;
+                },
+                new { ProductId = id }
+            );
+
+            return list.AsList().FirstOrDefault();
         }
     }
 }

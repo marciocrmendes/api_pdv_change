@@ -1,28 +1,17 @@
 ﻿using Entities;
 using Infra.Mappings.EFCoreMap;
+using Infra.Seed;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infra.Config
 {
     public class ApiContext : DbContext
     {
-        private IConfiguration _configuration;
-
         public DbSet<Banknote> Banknotes { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleBanknote> SaleBanknotes { get; set; }
         public DbSet<SaleProduct> SaleProducts { get; set; }
-
-        public ApiContext(IConfiguration configuration, DbContextOptions options) : base(options)
-        {
-            _configuration = configuration;
-            Database.Migrate();
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,7 +19,7 @@ namespace Infra.Config
             if (! optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseNpgsql(_configuration.GetConnectionString("PgsqlConnection"))
+                    .UseNpgsql("Server=localhost;Port=5432;Database=apitest;User Id=postgres;Password=postgres;")
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors();
             }
@@ -41,6 +30,7 @@ namespace Infra.Config
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             MappingEntities.Init(modelBuilder);
+            SeedingEntities.Init(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }

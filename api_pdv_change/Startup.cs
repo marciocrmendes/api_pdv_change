@@ -1,6 +1,8 @@
+using Infra.Config;
 using Infra.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,10 @@ namespace api_pdv_change
                 app.UseDeveloperExceptionPage();
             }
 
+
+            UpdateDatabase(app);
+
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -41,6 +47,16 @@ namespace api_pdv_change
             {
                 endpoints.MapControllers();
             });
+        }
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<ApiContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using Infra.IRepository;
+﻿using Infra.Config;
+using Infra.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Infra.Repository
@@ -23,12 +25,12 @@ namespace Infra.Repository
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().Find(id);
         }
 
         public bool Remove(T entity)

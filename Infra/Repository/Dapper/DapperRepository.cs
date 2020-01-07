@@ -4,6 +4,7 @@ using Dapper.FluentMap.Dommel;
 using Infra.IRepository;
 using Infra.Mappings.DapperMap;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,12 +13,10 @@ namespace Infra.Repository.Dapper
 {
     public abstract class DapperRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly IConfiguration _configuration;
-        protected readonly SqlConnection _connection;
+        protected readonly NpgsqlConnection _connection;
 
-        public DapperRepository(IConfiguration configuration)
+        protected DapperRepository()
         {
-            _configuration = configuration;
             if (FluentMapper.EntityMaps.IsEmpty)
             {
                 FluentMapper.Initialize(c =>
@@ -28,7 +27,7 @@ namespace Infra.Repository.Dapper
                     c.ForDommel();
                 });
             }
-            _connection = new SqlConnection(_configuration.GetConnectionString("PgsqlConnection"));
+            _connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=apitest;User Id=postgres;Password=postgres;");
         }
 
         /// <summary>

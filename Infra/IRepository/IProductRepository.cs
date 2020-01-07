@@ -7,6 +7,5 @@ namespace Infra.IRepository
 {
     public interface IProductRepository : IRepository<Product>
     {
-
     }
 }
