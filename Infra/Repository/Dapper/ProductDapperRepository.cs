@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Entities;
-using Infra.IRepository;
+using Infra.IRepository.Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Infra.Repository.Dapper
 {
-    public class ProductDapperRepository : DapperRepository<Product>, IProductRepository
+    public class ProductDapperRepository : DapperRepository<Product>, IProductDapperRepository
     {
         public ProductDapperRepository()
         {

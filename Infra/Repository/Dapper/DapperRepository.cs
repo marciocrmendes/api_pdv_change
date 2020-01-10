@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Infra.Repository.Dapper
 {
-    public abstract class DapperRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class DapperRepository<TEntity> : IDisposable, IReadableRepository<TEntity> where TEntity : class
     {
         protected readonly NpgsqlConnection _connection;
 
@@ -48,37 +48,48 @@ namespace Infra.Repository.Dapper
             return _connection.Get<TEntity>(id);
         }
 
-        private bool _disposed = false;
+
+        #region IDisposable Support
+        private bool _disposed = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    GC.SuppressFinalize(this);
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                _connection.Close();
+                _connection.Dispose();
+
+                _disposed = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
 
         /// <summary>
         /// Destrutor do método
         /// </summary>
-        ~DapperRepository() => Dispose();
+        ~DapperRepository()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
 
+        // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
-            if (!_disposed)
-            {
-                _connection.Close();
-                _connection.Dispose();
-                _disposed = true;
-            }
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
             GC.SuppressFinalize(this);
         }
-
-        public bool Add(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }

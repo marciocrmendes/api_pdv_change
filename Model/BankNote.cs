@@ -10,7 +10,7 @@ namespace Entities
         /// <summary>
         /// Valor da cédula ou moeda
         /// </summary>
-        public int Value { get; set; }
+        public decimal Value { get; set; }
         /// <summary>
         /// Checa se é moeda ou cédula
         /// </summary>

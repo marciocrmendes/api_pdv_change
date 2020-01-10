@@ -6,24 +6,22 @@ using System.Text;
 
 namespace Infra.Seed
 {
-    public class SaleSeed
+    public class SaleProductSeed
     {
-        public SaleSeed(ModelBuilder modelBuilder)
+        public SaleProductSeed(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Sale>().HasData(
-               new Sale
+            modelBuilder.Entity<SaleProduct>().HasData(
+               new SaleProduct
                {
-                   Id = 1,
-                   Total = 50,
-                   Date = DateTime.Now,
-                   Descount = 0,
+                   SaleId = 1,
+                   ProductId = 1,
+                   Quantity = 3
                },
-               new Sale
+               new SaleProduct
                {
-                   Id = 2,
-                   Total = 10,
-                   Date = DateTime.Now,
-                   Descount = 0,
+                   SaleId = 1,
+                   ProductId = 2,
+                   Quantity = 3
                }
             );
         }

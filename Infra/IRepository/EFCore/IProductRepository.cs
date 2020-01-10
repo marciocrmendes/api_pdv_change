@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infra.IRepository
+namespace Infra.IRepository.EFCore
 {
     public interface IProductRepository : IRepository<Product>
     {

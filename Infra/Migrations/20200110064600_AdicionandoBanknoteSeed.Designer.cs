@@ -3,15 +3,17 @@ using System;
 using Infra.Config;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    partial class ApiContextModelSnapshot : ModelSnapshot
+    [Migration("20200110064600_AdicionandoBanknoteSeed")]
+    partial class AdicionandoBanknoteSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,13 +48,13 @@ namespace Infra.Migrations
                         {
                             Id = 1,
                             Type = (short)1,
-                            Value = 0.01m
+                            Value = 0.1m
                         },
                         new
                         {
                             Id = 2,
                             Type = (short)1,
-                            Value = 0.05m
+                            Value = 0.5m
                         },
                         new
                         {

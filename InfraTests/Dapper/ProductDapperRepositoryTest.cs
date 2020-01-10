@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace InfraTests
 {
+    [TestFixture]
     public class ProductDapperRepositoryTest
     {
         private ProductDapperRepository _productDapperRepository;

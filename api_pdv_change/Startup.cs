@@ -48,6 +48,7 @@ namespace api_pdv_change
                 endpoints.MapControllers();
             });
         }
+
         private static void UpdateDatabase(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())

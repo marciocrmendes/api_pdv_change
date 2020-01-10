@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Entities;
-using Infra.IRepository;
+using Infra.IRepository.Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Infra.Repository.Dapper
 {
-    public class SaleDapperRepository : DapperRepository<Sale>, ISaleRepository
+    public class SaleDapperRepository : DapperRepository<Sale>, ISaleDapperRepository
     {
         public override IEnumerable<Sale> GetAll()
         {
@@ -61,16 +61,18 @@ namespace Infra.Repository.Dapper
                     * 
                 FROM sales as s
                 INNER JOIN sale_product AS sp ON sp.sale_id = s.id
+                INNER JOIN sale_banknote as sb ON sb.sale_id = s.id
                 INNER JOIN products AS p ON p.id = sp.product_id
+                INNER JOIN banknote AS b ON b.id = sb.banknote_id
                 WHERE
                     s.id = @SaleId";
 
             var s = new Sale();
             using (var conn = _connection)
             {
-                conn.Query<Sale, Product, Sale>(sql
+                conn.Query<Sale, Product, Banknote, Sale>(sql
                     ,
-                    map: (sale, product) =>
+                    map: (sale, product, banknote) =>
                     {
                         var salesProducts = new SaleProduct()
                         {
@@ -80,7 +82,16 @@ namespace Infra.Repository.Dapper
                             Sale = sale
                         };
 
+                        var salesBanknotes = new SaleBanknote()
+                        {
+                            SaleId = sale.Id,
+                            Sale = sale,
+                            BanknoteId = banknote.Id,
+                            Banknote = banknote
+                        };
+
                         s.ProductsSold.Add(salesProducts);
+                        s.Banknotes.Add(salesBanknotes);
                         return sale;
                     },
                     new { SaleId = id }

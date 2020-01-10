@@ -1,9 +1,10 @@
 ﻿using Infra.Config;
+using Infra.IRepository.Dapper;
+using Infra.IRepository.EFCore;
+using Infra.Repository.Dapper;
+using Infra.Repository.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infra.DependencyInjection
 {
@@ -16,10 +17,15 @@ namespace Infra.DependencyInjection
         public static void InitServices(this IServiceCollection services)
         {
             services.AddScoped<DbContext, ApiContext>();
-            //services.AddScoped<IAutorEFRepository, AutorEFRepository>();
-            //services.AddScoped<ILivroEFRepository, LivroEFRepository>();
-            //services.AddScoped<IAutorDapperRepository, AutorDapperRepository>();
-            //services.AddScoped<ILivroDapperRepository, LivroDapperRepository>();
+
+            services.AddScoped<IProductDapperRepository, ProductDapperRepository>();
+            services.AddScoped<ISaleDapperRepository, SaleDapperRepository>();
+            services.AddScoped<IBanknoteDapperRepository, BanknoteDapperRepository>();
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<IBanknoteRepository, BanknoteRepository>();
+
         }
     }
 }

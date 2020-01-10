@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Infra.Config;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace api_pdv_change.Controllers
@@ -13,17 +14,20 @@ namespace api_pdv_change.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly DbContext _context;
+
+
         private ILogger _logger;
 
-        public ProductController(ApiContext context, ILogger<ProductController> logger)
+        public ProductController(DbContext context, ILogger<ProductController> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        public IActionResult GetAll()
-        {
-
-        }
+        //public IActionResult GetAll()
+        //{
+        //    _context.
+        //}
     }
 }

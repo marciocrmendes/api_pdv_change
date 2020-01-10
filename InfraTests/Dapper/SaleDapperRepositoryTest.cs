@@ -19,9 +19,17 @@ namespace InfraTests.Dapper
         }
 
         [Test]
-        public void RetornandoAlgumaVenda()
+        public void Returning_All_Sales()
         {
-            Assert.IsTrue(_saleDapperRepository.GetAll().AsList().Any());
+            Assert.IsTrue(_saleDapperRepository.GetAll().Any());
+        }
+
+        [Test]
+        public void Returning_Banknotes_From_Especified_Sale()
+        {
+            var sale = _saleDapperRepository.GetById(1);
+
+            
         }
     }
 }
