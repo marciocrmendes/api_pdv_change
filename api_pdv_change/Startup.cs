@@ -53,7 +53,7 @@ namespace api_pdv_change
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetService<ApiContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<DbContext>())
                 {
                     context.Database.Migrate();
                 }

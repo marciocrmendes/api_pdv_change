@@ -19,7 +19,7 @@ namespace Infra.Config
             if (! optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseNpgsql("Server=localhost;Port=5432;Database=apitest;User Id=postgres;Password=postgres;")
+                    .UseNpgsql("Server=172.18.0.2;Port=2124;Database=api_pdv_docker;User Id=postgres;Password=postgres;")
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors();
             }

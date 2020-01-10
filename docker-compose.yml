@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  api_pdv_change:
+    image: marciomendes/apipdvchange
+    build:
+      context: .
+      dockerfile: api_pdv_change/Dockerfile
+    links:
+      - db_pgsql
+    ports:
+      - 0.0.0.0:2125:80
+    networks:
+      - postgres-network
+
+  db_pgsql:
+    image: postgres
+    environment:
+      - POSTGRES_DB=api_pdv_docker
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 0.0.0.0:2124:5432
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    external: true

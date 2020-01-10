@@ -15,8 +15,7 @@ namespace Infra.Repository.Dapper
     public abstract class DapperRepository<T> : IDapperRepository<T> where T : class
     {
         protected readonly NpgsqlConnection _connection;
-
-        protected DapperRepository()
+        public DapperRepository()
         {
             if (FluentMapper.EntityMaps.IsEmpty)
             {
@@ -28,7 +27,7 @@ namespace Infra.Repository.Dapper
                     c.ForDommel();
                 });
             }
-            _connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=apitest;User Id=postgres;Password=postgres;");
+            _connection = new NpgsqlConnection("Server=172.18.0.2;Port=2124;Database=api_pdv_docker;User Id=postgres;Password=postgres;");
         }
 
         /// <summary>

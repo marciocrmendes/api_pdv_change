@@ -7,12 +7,12 @@ using System.Text;
 
 namespace Infra.Services
 {
-    public abstract class Service<T> : IService<T> where T : class
+    public class Service<T> : IService<T> where T : class
     {
         private readonly IRepository<T> _entityRepository;
         private readonly IDapperRepository<T> _dapperRepository;
 
-        protected Service(IRepository<T> entityRepository, IDapperRepository<T> dapperRepository)
+        public Service(IRepository<T> entityRepository, IDapperRepository<T> dapperRepository)
         {
             _entityRepository = entityRepository;
             _dapperRepository = dapperRepository;
