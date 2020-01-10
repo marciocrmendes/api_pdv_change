@@ -27,7 +27,7 @@ namespace Infra.Repository.Dapper
                     c.ForDommel();
                 });
             }
-            _connection = new NpgsqlConnection("Server=172.18.0.2;Port=2124;Database=api_pdv_docker;User Id=postgres;Password=postgres;");
+            _connection = new NpgsqlConnection("Server=db_pgsql;Port=5432;Database=api_pdv_docker;User Id=postgres;Password=postgres;");
         }
 
         /// <summary>
