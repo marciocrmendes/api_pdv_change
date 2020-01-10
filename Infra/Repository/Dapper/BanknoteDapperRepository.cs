@@ -1,5 +1,5 @@
 ﻿using Entities;
-using Infra.IRepository.Dapper;
+using Infra.Interfaces.IRepository.Dapper;
 using System;
 using System.Collections.Generic;
 using System.Text;

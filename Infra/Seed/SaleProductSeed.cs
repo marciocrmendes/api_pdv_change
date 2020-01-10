@@ -22,6 +22,24 @@ namespace Infra.Seed
                    SaleId = 1,
                    ProductId = 2,
                    Quantity = 3
+               },
+               new SaleProduct
+               {
+                   SaleId = 2,
+                   ProductId = 2,
+                   Quantity = 1
+               },
+               new SaleProduct
+               {
+                   SaleId = 2,
+                   ProductId = 3,
+                   Quantity = 1
+               },
+               new SaleProduct
+               {
+                   SaleId = 2,
+                   ProductId = 4,
+                   Quantity = 1
                }
             );
         }

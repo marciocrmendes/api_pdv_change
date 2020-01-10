@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infra.IRepository.EFCore
+namespace Infra.Interfaces.IServices
 {
-    public interface IProductRepository : IRepository<Product>
+    public interface IBanknoteService : IService<Banknote>
     {
     }
 }

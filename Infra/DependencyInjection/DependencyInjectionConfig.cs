@@ -1,8 +1,10 @@
 ﻿using Infra.Config;
-using Infra.IRepository.Dapper;
-using Infra.IRepository.EFCore;
+using Infra.Interfaces.IRepository.Dapper;
+using Infra.Interfaces.IRepository.EFCore;
+using Infra.Interfaces.IServices;
 using Infra.Repository.Dapper;
 using Infra.Repository.EFCore;
+using Infra.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +19,10 @@ namespace Infra.DependencyInjection
         public static void InitServices(this IServiceCollection services)
         {
             services.AddScoped<DbContext, ApiContext>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddScoped<IProductDapperRepository, ProductDapperRepository>();
             services.AddScoped<ISaleDapperRepository, SaleDapperRepository>();

@@ -1,5 +1,5 @@
 ﻿using Entities;
-using Infra.IRepository.EFCore;
+using Infra.Interfaces.IRepository.EFCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +12,6 @@ namespace Infra.Repository.EFCore
         public SaleRepository(DbContext context) : base(context)
         {
         }
+
     }
 }

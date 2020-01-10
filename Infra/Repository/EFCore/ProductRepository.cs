@@ -1,5 +1,5 @@
 ﻿using Entities;
-using Infra.IRepository.EFCore;
+using Infra.Interfaces.IRepository.EFCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repository.EFCore

@@ -1,6 +1,7 @@
 ﻿using Entities;
+using Infra.IRepository;
 
-namespace Infra.IRepository.EFCore
+namespace Infra.Interfaces.IRepository.EFCore
 {
     public interface ISaleRepository : IRepository<Sale>
     {

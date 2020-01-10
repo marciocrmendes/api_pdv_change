@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Entities;
-using Infra.IRepository.Dapper;
+using Infra.Interfaces.IRepository.Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -11,10 +11,6 @@ namespace Infra.Repository.Dapper
 {
     public class ProductDapperRepository : DapperRepository<Product>, IProductDapperRepository
     {
-        public ProductDapperRepository()
-        {
-        }
-
         public override IEnumerable<Product> GetAll()
         {
             var sql = @"

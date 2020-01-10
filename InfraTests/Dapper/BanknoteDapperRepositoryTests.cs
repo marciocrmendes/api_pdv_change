@@ -1,4 +1,4 @@
-﻿using Infra.IRepository.Dapper;
+﻿using Infra.Interfaces.IRepository.Dapper;
 using Infra.Repository.Dapper;
 using NUnit.Framework;
 using System;

@@ -14,14 +14,14 @@ namespace Infra.Seed
                new Sale
                {
                    Id = 1,
-                   Total = 50,
+                   Total = 42.6m,
                    Date = DateTime.Now,
                    Descount = 0,
                },
                new Sale
                {
                    Id = 2,
-                   Total = 10,
+                   Total = 29.18m,
                    Date = DateTime.Now,
                    Descount = 0,
                }

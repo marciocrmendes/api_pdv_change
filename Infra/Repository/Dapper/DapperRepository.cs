@@ -1,6 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 using Dapper.FluentMap;
 using Dapper.FluentMap.Dommel;
+using Infra.Interfaces;
 using Infra.IRepository;
 using Infra.Mappings.DapperMap;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace Infra.Repository.Dapper
 {
-    public abstract class DapperRepository<TEntity> : IDisposable, IReadableRepository<TEntity> where TEntity : class
+    public abstract class DapperRepository<T> : IDapperRepository<T> where T : class
     {
         protected readonly NpgsqlConnection _connection;
 
@@ -34,18 +35,18 @@ namespace Infra.Repository.Dapper
         /// Retorna todos os itens
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
-            return _connection.GetAll<TEntity>();
+            return _connection.GetAll<T>();
         }
 
         /// <summary>
         /// Retorna pelo Id
         /// </summary>
         /// <returns></returns>
-        public virtual TEntity GetById(int id)
+        public virtual T GetById(int id)
         {
-            return _connection.Get<TEntity>(id);
+            return _connection.Get<T>(id);
         }
 
 

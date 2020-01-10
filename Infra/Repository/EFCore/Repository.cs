@@ -17,7 +17,7 @@ namespace Infra.Repository
             _context = context;
         }
 
-        public bool Add(T entity)
+        public virtual bool Add(T entity)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Infra.Repository
             }
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Infra.Repository
             }
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Infra.Repository
             }
         }
 
-        public bool Remove(T entity)
+        public virtual bool Remove(T entity)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace Infra.Repository
             }
         }
 
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             try
             {
