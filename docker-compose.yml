@@ -8,6 +8,8 @@ services:
       dockerfile: api_pdv_change/Dockerfile
     links:
       - db_pgsql
+    expose:
+      - 2125
     ports:
       - 0.0.0.0:2125:80
     networks:
@@ -20,7 +22,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - 5432:5432
+      - 5435:5432
     networks:
       - postgres-network
 

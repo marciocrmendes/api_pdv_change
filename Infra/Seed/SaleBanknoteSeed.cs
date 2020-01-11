@@ -11,42 +11,20 @@ namespace Infra.Seed
                   new SaleBanknote
                   {
                       SaleId = 1,
-                      BanknoteId = 6
+                      BanknoteId = 6,
+                      Quantity = 2
                   },
                   new SaleBanknote
                   {
                       SaleId = 1,
-                      BanknoteId = 6
+                      BanknoteId = 4,
+                      Quantity = 5
                   },
                   new SaleBanknote
                   {
                       SaleId = 1,
-                      BanknoteId = 4
-                  },
-                  new SaleBanknote
-                  {
-                      SaleId = 1,
-                      BanknoteId = 4
-                  },
-                  new SaleBanknote
-                  {
-                      SaleId = 1,
-                      BanknoteId = 4
-                  },
-                  new SaleBanknote
-                  {
-                      SaleId = 1,
-                      BanknoteId = 4
-                  },
-                  new SaleBanknote
-                  {
-                      SaleId = 1,
-                      BanknoteId = 4
-                  },
-                  new SaleBanknote
-                  {
-                      SaleId = 1,
-                      BanknoteId = 3
+                      BanknoteId = 3,
+                      Quantity = 1
                   }
                );
         }

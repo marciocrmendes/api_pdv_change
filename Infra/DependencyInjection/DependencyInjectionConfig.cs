@@ -20,18 +20,17 @@ namespace Infra.DependencyInjection
         {
             services.AddScoped<DbContext, ApiContext>();
 
-            //services.AddScoped<IProductService, ProductService>();
-            //services.AddScoped<ISaleService, SaleService>();
-            //services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+            services.AddScoped<IBanknoteRepository, BanknoteRepository>();
 
             services.AddScoped<IProductDapperRepository, ProductDapperRepository>();
             services.AddScoped<ISaleDapperRepository, SaleDapperRepository>();
             services.AddScoped<IBanknoteDapperRepository, BanknoteDapperRepository>();
 
-            services.AddScoped<IProductRepository, ProductRepository>();
-            //services.AddScoped<ISaleRepository, SaleRepository>();
-            //services.AddScoped<IBanknoteRepository, BanknoteRepository>();
-
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<IBanknoteService, BanknoteService>();
         }
     }
 }

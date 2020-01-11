@@ -1,4 +1,6 @@
 ﻿using Entities;
+using Infra.Interfaces.IRepository.Dapper;
+using Infra.Interfaces.IRepository.EFCore;
 using Infra.Interfaces.IServices;
 using Infra.IRepository;
 using System;
@@ -10,8 +12,8 @@ namespace Infra.Services
     public class ProductService : Service<Product>, IProductService
     {
         public ProductService(
-            IRepository<Product> entityRepository, 
-            IDapperRepository<Product> dapperRepository) : base(entityRepository, dapperRepository)
+            IProductRepository entityRepository, 
+            IProductDapperRepository dapperRepository) : base(entityRepository, dapperRepository)
         {
         }
     }

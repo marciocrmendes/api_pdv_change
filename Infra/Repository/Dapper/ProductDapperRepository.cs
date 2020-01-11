@@ -16,7 +16,7 @@ namespace Infra.Repository.Dapper
             var sql = @"
                 SELECT 
                     * 
-                FROM product as p";
+                FROM products as p";
             return _connection.Query<Product>(sql);
         }
 

@@ -11,6 +11,10 @@
         /// </summary>
         public int BanknoteId { get; set; }
         /// <summary>
+        /// Quantidade das respectivas notas usadas na compra
+        /// </summary>
+        public int Quantity { get; set; }
+        /// <summary>
         /// Venda
         /// </summary>
         public virtual Sale Sale { get; set; }

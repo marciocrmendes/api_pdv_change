@@ -1,14 +1,13 @@
 ﻿using Dapper.Contrib.Extensions;
 using Dapper.FluentMap;
 using Dapper.FluentMap.Dommel;
-using Infra.Interfaces;
+using Infra.Config;
 using Infra.IRepository;
 using Infra.Mappings.DapperMap;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace Infra.Repository.Dapper
 {
@@ -27,7 +26,7 @@ namespace Infra.Repository.Dapper
                     c.ForDommel();
                 });
             }
-            _connection = new NpgsqlConnection("Server=db_pgsql;Port=5432;Database=api_pdv_docker;User Id=postgres;Password=postgres;");
+            _connection = new NpgsqlConnection(AppConfigurationMannager.GetConnectionString("PgsqlConnection"));
         }
 
         /// <summary>

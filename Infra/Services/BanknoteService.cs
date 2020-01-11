@@ -1,4 +1,6 @@
 ﻿using Entities;
+using Infra.Interfaces.IRepository.Dapper;
+using Infra.Interfaces.IRepository.EFCore;
 using Infra.Interfaces.IServices;
 using Infra.IRepository;
 using System;
@@ -10,8 +12,8 @@ namespace Infra.Services
     public class BanknoteService : Service<Banknote>, IBanknoteService
     {
         public BanknoteService(
-            IRepository<Banknote> entityRepository, 
-            IDapperRepository<Banknote> dapperRepository) : base(entityRepository, dapperRepository)
+            IBanknoteRepository entityRepository,
+            IBanknoteDapperRepository dapperRepository) : base(entityRepository, dapperRepository)
         {
         }
     }

@@ -17,7 +17,7 @@ namespace Infra.Seed
             new ProductSeed(modelBuilder);
             new BanknoteSeed(modelBuilder);
             new SaleProductSeed(modelBuilder);
-            //new SaleBanknoteSeed(modelBuilder);
+            new SaleBanknoteSeed(modelBuilder);
         }
     }
 }

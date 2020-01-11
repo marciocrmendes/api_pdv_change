@@ -12,8 +12,8 @@ using Microsoft.Extensions.Logging;
 
 namespace api_pdv_change.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]/")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -26,6 +26,7 @@ namespace api_pdv_change.Controllers
             _logger = logger;
         }
 
+        [Route("getall")]
         public IActionResult GetAll()
         {
             var products = _productService.GetAll();

@@ -27,6 +27,12 @@ namespace Infra.Mappings.EFCoreMap
                 .WithMany(s => s.Sales)
                 .HasForeignKey(sp => sp.BanknoteId);
 
+            builder.HasIndex(x => x.Quantity);
+            builder.Property(x => x.Quantity)
+                .HasColumnName("quantity")
+                .HasDefaultValue(1)
+                .IsRequired();
+
             builder.ToTable("sale_banknote");
         }
     }

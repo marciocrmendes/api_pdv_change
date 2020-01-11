@@ -34,6 +34,9 @@ namespace api_pdv_change
             }
 
 
+            AppConfigurationMannager.SetConfiguration(Configuration);
+
+
             UpdateDatabase(app);
 
 
@@ -49,7 +52,11 @@ namespace api_pdv_change
             });
         }
 
-        private static void UpdateDatabase(IApplicationBuilder app)
+        /// <summary>
+        /// Atualiza o banco, verificando se existe algo novo a ser criado/atualizado pelas migrations
+        /// </summary>
+        /// <param name="app"></param>
+        private void UpdateDatabase(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
