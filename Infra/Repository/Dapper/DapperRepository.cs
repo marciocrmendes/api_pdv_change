@@ -26,6 +26,9 @@ namespace Infra.Repository.Dapper
                     c.ForDommel();
                 });
             }
+
+            AppConfigurationMannager.Init();
+
             _connection = new NpgsqlConnection(AppConfigurationMannager.GetConnectionString("PgsqlConnection"));
         }
 

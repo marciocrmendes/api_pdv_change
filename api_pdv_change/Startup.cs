@@ -34,7 +34,7 @@ namespace api_pdv_change
             }
 
 
-            AppConfigurationMannager.SetConfiguration(Configuration);
+            AppConfigurationMannager.Init();
 
 
             UpdateDatabase(app);

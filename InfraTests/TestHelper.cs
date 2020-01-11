@@ -1,27 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Infra.Config;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace InfraTests
 {
     public static class TestHelper
     {
-        public static IConfigurationRoot GetIConfigurationRoot(string outputPath)
+        public static void Init()
         {
-            return new ConfigurationBuilder()
-                .SetBasePath(outputPath)
-                .AddJsonFile("appsettings.json", optional: true)
-                .Build();
-        }
-
-        public static IConfiguration GetApplicationConfiguration(string outputPath)
-        {
-            var iConfig = GetIConfigurationRoot(outputPath);
-
-            var configSection = iConfig.GetSection("ConnectionStrings");
-
-            return configSection;
+            AppConfigurationMannager.Init();
         }
     }
 }

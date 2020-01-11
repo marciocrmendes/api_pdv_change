@@ -2,6 +2,9 @@
 using Infra.Mappings.EFCoreMap;
 using Infra.Seed;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
+using System.IO;
 
 namespace Infra.Config
 {
@@ -15,14 +18,17 @@ namespace Infra.Config
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Se não estiver configurado no projeto IU pega deginição de chame do json configurado
-            if (! optionsBuilder.IsConfigured)
+            if (optionsBuilder.IsConfigured)
             {
-                optionsBuilder
-                    .UseNpgsql(AppConfigurationMannager.GetConnectionString("PgsqlConnection"))
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors();
+                base.OnConfiguring(optionsBuilder);
+                return;
             }
+
+            // Se não estiver configurado no projeto IU pega deginição de chame do json configurado
+            optionsBuilder
+                .UseNpgsql(AppConfigurationMannager.GetConnectionString("PgsqlConnection"))
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
 
             base.OnConfiguring(optionsBuilder);
         }
