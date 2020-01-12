@@ -10,7 +10,7 @@ namespace Infra.Mappings.DapperMap
     {
         public BanknoteDapperMap()
         {
-            ToTable("banknote");
+            ToTable("banknotes");
             Map(p => p.Id).IsKey().ToColumn("id");
             Map(p => p.Type).ToColumn("type");
             Map(p => p.Value).ToColumn("value");

@@ -24,6 +24,8 @@ namespace Infra.Config
                 return;
             }
 
+            AppConfigurationMannager.Init();
+
             // Se não estiver configurado no projeto IU pega deginição de chame do json configurado
             optionsBuilder
                 .UseNpgsql(AppConfigurationMannager.GetConnectionString("PgsqlConnection"))

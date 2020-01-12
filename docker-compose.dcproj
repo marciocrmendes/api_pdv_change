@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>7ff072a7-d54c-430f-b57e-e8964acd417d</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api-pdv-change</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/api/</DockerServiceUrl>
     <DockerServiceName>api_pdv_change</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

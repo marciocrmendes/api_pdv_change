@@ -13,6 +13,9 @@ namespace Infra.Config
 
         public static void Init()
         {
+            if (!string.IsNullOrWhiteSpace(Configuration.GetConnectionString("PgsqlConnection")))
+                return;
+
             string pathToContentRoot = Directory.GetCurrentDirectory();
             string json = Path.Combine(pathToContentRoot, "appsettings.json");
 

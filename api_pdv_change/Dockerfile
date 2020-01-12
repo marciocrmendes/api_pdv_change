@@ -29,4 +29,4 @@ WORKDIR /app
 LABEL Author="Márcio Mendes"
 LABEL Maintainer="marciomendes"
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "api_pdv_change.dll", "--server.urls", "http://*:80"]
+ENTRYPOINT ["dotnet", "api_pdv_change.dll"]

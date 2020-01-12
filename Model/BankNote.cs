@@ -18,6 +18,6 @@ namespace Entities
         /// <summary>
         /// Venda em que a nota esteja
         /// </summary>
-        public virtual IList<SaleBanknote> Sales { get; set; }
+        public virtual IList<SaleBanknote> Sales { get; set; } = new List<SaleBanknote>();
     }
 }

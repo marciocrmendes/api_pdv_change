@@ -1,8 +1,10 @@
 version: "3.4"
 
 services:
+
   api_pdv_change:
     image: marciomendes/apipdvchange
+    restart: always
     build:
       context: .
       dockerfile: api_pdv_change/Dockerfile
@@ -13,7 +15,7 @@ services:
     ports:
       - "0.0.0.0:32800:443"
     networks:
-      - postgres-network
+      - api-pdv-network
 
   db_pgsql:
     image: postgres
@@ -24,8 +26,8 @@ services:
     ports:
       - "5435:5432"
     networks:
-      - postgres-network
+      - api-pdv-network
 
 networks:
-  postgres-network:
+  api-pdv-network:
     driver: bridge

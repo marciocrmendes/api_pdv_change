@@ -27,7 +27,7 @@ namespace Infra.Mappings.EFCoreMap
                 .HasDefaultValue(BankNoteEnum.Note)
                 .IsRequired();
             
-            builder.ToTable("banknote");
+            builder.ToTable("banknotes");
         }
     }
 }

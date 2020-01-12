@@ -10,7 +10,7 @@ namespace Infra.Mappings.DapperMap
     {
         public SaleDapperMap()
         {
-            ToTable("Sale");
+            ToTable("sales");
             Map(p => p.Id).IsKey().ToColumn("id");
             Map(p => p.Total).ToColumn("total");
             Map(p => p.Descount).ToColumn("descount");

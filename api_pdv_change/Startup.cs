@@ -34,7 +34,7 @@ namespace api_pdv_change
             }
 
 
-            AppConfigurationMannager.Init();
+            //AppConfigurationMannager.Init();
 
 
             UpdateDatabase(app);
@@ -43,6 +43,9 @@ namespace api_pdv_change
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

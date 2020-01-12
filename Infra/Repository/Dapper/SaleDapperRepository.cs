@@ -63,7 +63,7 @@ namespace Infra.Repository.Dapper
                 INNER JOIN sale_product AS sp ON sp.sale_id = s.id
                 INNER JOIN sale_banknote as sb ON sb.sale_id = s.id
                 INNER JOIN products AS p ON p.id = sp.product_id
-                INNER JOIN banknote AS b ON b.id = sb.banknote_id
+                INNER JOIN banknotes AS b ON b.id = sb.banknote_id
                 WHERE
                     s.id = @SaleId";
 
