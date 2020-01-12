@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api_pdv_change</name>
+    </assembly>
+    <members>
+        <member name="T:api_pdv_change.Controllers.ChangeController">
+            <summary>
+            Controller responsável pelo calculo do troco
+            </summary>
+        </member>
+        <member name="M:api_pdv_change.Controllers.ChangeController.#ctor(Infra.Interfaces.IServices.ISaleService,Infra.Interfaces.IServices.IBanknoteService,Microsoft.Extensions.Logging.ILogger{api_pdv_change.Controllers.ChangeController})">
+            <summary>
+            Construtor
+            </summary>
+            <param name="saleService"></param>
+            <param name="banknoteService"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:api_pdv_change.Controllers.ChangeController.Change(System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Retorna o troco, se houver necessidade
+            </summary>
+            <param name="totalSelling">Total da compra</param>
+            <param name="givenValue">Total do valor dado pelo cliente</param>
+            <returns></returns>
+        </member>
+        <member name="M:api_pdv_change.Startup.UpdateDatabase(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Atualiza o banco, verificando se existe algo novo a ser criado/atualizado pelas migrations
+            </summary>
+            <param name="app"></param>
+        </member>
+    </members>
+</doc>

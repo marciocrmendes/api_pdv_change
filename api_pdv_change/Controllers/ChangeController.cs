@@ -10,6 +10,9 @@ using Entities;
 
 namespace api_pdv_change.Controllers
 {
+    /// <summary>
+    /// Controller responsável pelo calculo do troco
+    /// </summary>
     [ApiController]
     [Produces("application/json")]
     [Route("api/[controller]/")]
@@ -19,20 +22,20 @@ namespace api_pdv_change.Controllers
         private readonly IBanknoteService _banknoteService;
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="saleService"></param>
+        /// <param name="banknoteService"></param>
+        /// <param name="logger"></param>
         public ChangeController(
             ISaleService saleService, 
             IBanknoteService banknoteService, 
-            ILogger<SaleController> logger)
+            ILogger<ChangeController> logger)
         {
             _saleService = saleService;
             _banknoteService = banknoteService;
             _logger = logger;
-        }
-
-        [Route("test")]
-        public IActionResult Test()
-        {
-            return new JsonResult(new { });
         }
 
         /// <summary>

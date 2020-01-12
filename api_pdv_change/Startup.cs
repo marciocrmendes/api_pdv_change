@@ -1,4 +1,3 @@
-using Infra.Config;
 using Infra.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace api_pdv_change
 {
@@ -23,6 +25,29 @@ namespace api_pdv_change
         {
             services.InitServices();
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "API - PDV Calculador de Troco",
+                        Version = "v1",
+                        Description = "API responsável por entregar o troco com as menores cédulas e/ou moedas possíveis",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                        {
+                            Name = "Marcio Mendes",
+                            Email = "marciocr.mendes@gmail.com",
+                            Url = new System.Uri("https://github.com/marciocristian")
+                        }
+                    });
+
+                var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var applicationName = PlatformServices.Default.Application.ApplicationName;
+                var xmlPath = Path.Combine(applicationBasePath, $"{applicationName}.xml");
+
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,15 +58,9 @@ namespace api_pdv_change
                 app.UseDeveloperExceptionPage();
             }
 
-
-            //AppConfigurationMannager.Init();
-
-
             UpdateDatabase(app);
 
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseDefaultFiles();
@@ -52,6 +71,12 @@ namespace api_pdv_change
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API - PDV Calculador de Troco");
             });
         }
 
