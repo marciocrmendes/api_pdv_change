@@ -8,5 +8,6 @@ namespace Infra.Interfaces.IRepository.Dapper
 {
     public interface ISaleDapperRepository : IDapperRepository<Sale>
     {
+        //Sale GetBanknotesDetailsById(int id);
     }
 }

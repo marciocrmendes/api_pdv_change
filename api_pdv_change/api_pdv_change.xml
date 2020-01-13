@@ -25,6 +25,23 @@
             <param name="givenValue">Total do valor dado pelo cliente</param>
             <returns></returns>
         </member>
+        <member name="T:api_pdv_change.Controllers.SaleController">
+            <summary>
+            Controller responsável pelos dados de Venda
+            </summary>
+        </member>
+        <member name="M:api_pdv_change.Controllers.SaleController.#ctor(Infra.Interfaces.IServices.ISaleService,Infra.Interfaces.IServices.IBanknoteService,Microsoft.Extensions.Logging.ILogger{api_pdv_change.Controllers.SaleController})">
+            <summary>
+            Construtor
+            </summary>
+        </member>
+        <member name="M:api_pdv_change.Controllers.SaleController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Detalha a compra pesquisada
+            </summary>
+            <param name="saleId">Id da compra</param>
+            <returns></returns>
+        </member>
         <member name="M:api_pdv_change.Startup.UpdateDatabase(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Atualiza o banco, verificando se existe algo novo a ser criado/atualizado pelas migrations

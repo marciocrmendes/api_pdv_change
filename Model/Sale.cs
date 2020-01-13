@@ -26,6 +26,6 @@ namespace Entities
         /// <summary>
         /// Notas utilizadas na compra
         /// </summary>
-        public virtual IList<SaleBanknote> Banknotes { get; set; } 
+        public virtual IList<SaleBanknote> Banknotes { get; set; } = new List<SaleBanknote>(); 
     }
 }

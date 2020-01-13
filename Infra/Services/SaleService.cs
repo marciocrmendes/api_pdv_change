@@ -11,10 +11,18 @@ namespace Infra.Services
 {
     public class SaleService : Service<Sale>, ISaleService
     {
+        private ISaleDapperRepository _dapperRepository;
+
         public SaleService(
             ISaleRepository entityRepository, 
             ISaleDapperRepository dapperRepository) : base(entityRepository, dapperRepository)
         {
+            _dapperRepository = dapperRepository;
         }
+
+        //public Sale GetBanknotesDetailsById(int id)
+        //{
+        //    return _dapperRepository.GetBanknotesDetailsById(id);
+        //}
     }
 }

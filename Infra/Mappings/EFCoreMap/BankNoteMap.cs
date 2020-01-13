@@ -14,7 +14,9 @@ namespace Infra.Mappings.EFCoreMap
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
-                .HasColumnName("id").IsRequired();
+                .HasColumnName("id")
+                .ValueGeneratedOnAdd()
+                .IsRequired();
 
             builder.Property(x => x.Value)
                 .HasColumnName("value").IsRequired();

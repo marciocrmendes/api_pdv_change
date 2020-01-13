@@ -26,8 +26,8 @@ namespace Infra.Repository.Dapper
                 SELECT 
                     * 
                 FROM products as p
-                INNER JOIN sale_product AS sp ON sp.product_id = p.id
-                INNER JOIN sales AS s ON s.id = sp.sale_id
+                LEFT JOIN sale_product AS sp ON sp.product_id = p.id
+                LEFT JOIN sales AS s ON s.id = sp.sale_id
                 WHERE
                     p.id = @ProductId";
             

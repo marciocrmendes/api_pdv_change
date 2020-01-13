@@ -60,10 +60,10 @@ namespace Infra.Repository.Dapper
                 SELECT 
                     * 
                 FROM sales as s
-                INNER JOIN sale_product AS sp ON sp.sale_id = s.id
-                INNER JOIN sale_banknote as sb ON sb.sale_id = s.id
-                INNER JOIN products AS p ON p.id = sp.product_id
-                INNER JOIN banknotes AS b ON b.id = sb.banknote_id
+                LEFT JOIN sale_product AS sp ON sp.sale_id = s.id
+                LEFT JOIN sale_banknote as sb ON sb.sale_id = s.id
+                LEFT JOIN products AS p ON p.id = sp.product_id
+                LEFT JOIN banknotes AS b ON b.id = sb.banknote_id
                 WHERE
                     s.id = @SaleId";
 
@@ -74,13 +74,13 @@ namespace Infra.Repository.Dapper
                     ,
                     map: (sale, product, banknote) =>
                     {
-                        var salesProducts = new SaleProduct()
-                        {
-                            ProductId = product.Id,
-                            Product = product,
-                            SaleId = sale.Id,
-                            Sale = sale
-                        };
+                        //var salesProducts = new SaleProduct()
+                        //{
+                        //    ProductId = product.Id,
+                        //    Product = product,
+                        //    SaleId = sale.Id,
+                        //    Sale = sale
+                        //};
 
                         var salesBanknotes = new SaleBanknote()
                         {
@@ -90,7 +90,7 @@ namespace Infra.Repository.Dapper
                             Banknote = banknote
                         };
 
-                        s.ProductsSold.Add(salesProducts);
+                        //s.ProductsSold.Add(salesProducts);
                         s.Banknotes.Add(salesBanknotes);
                         return sale;
                     },

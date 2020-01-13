@@ -1,4 +1,5 @@
-﻿using Infra.Interfaces;
+﻿using Entities;
+using Infra.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

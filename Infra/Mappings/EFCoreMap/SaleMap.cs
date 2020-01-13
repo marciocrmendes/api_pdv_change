@@ -13,6 +13,7 @@ namespace Infra.Mappings.EFCoreMap
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id)
                 .HasColumnName("id")
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
             //builder.Property(cs => cs.CashierId)
